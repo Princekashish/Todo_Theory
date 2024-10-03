@@ -1,10 +1,10 @@
 import React from "react";
-import TaskList from "../../container/TaskList";
+import Task from "../../container/Task";
 
 const Home: React.FC = () => {
   return (
     <>
-      <TaskList />
+      <Task/>
     </>
   );
 };

@@ -61,7 +61,7 @@ const TaskList: React.FC = () => {
     if (isAuthenticated && email) {
       fetchTasks(email);
     } else {
-      setTasks([]); // Clear tasks when logged out
+      setTasks([]);
     }
   };
 
@@ -109,8 +109,8 @@ const TaskList: React.FC = () => {
 
   // Handle editing the task
   const editTask = (task: Task) => {
-    setEditingTaskId(task.id); 
-    setEditingTaskText(task.task); 
+    setEditingTaskId(task.id);
+    setEditingTaskText(task.task);
   };
 
   // Save the edited task
@@ -118,12 +118,12 @@ const TaskList: React.FC = () => {
     try {
       const updatedTask = tasks.find((task) => task.id === id);
       if (updatedTask) {
-        const newTaskData = { ...updatedTask, task: editingTaskText }; 
+        const newTaskData = { ...updatedTask, task: editingTaskText };
         await updateDoc(doc(db, "tasks", id), newTaskData);
         setTasks((prevTasks) =>
           prevTasks.map((task) => (task.id === id ? newTaskData : task))
         );
-        setEditingTaskId(null); // Exit edit mode
+        setEditingTaskId(null);
       }
     } catch (error) {
       console.error("Error saving edited task: ", error);
@@ -136,7 +136,7 @@ const TaskList: React.FC = () => {
     id: string
   ) => {
     if (e.key === "Enter") {
-      saveEditedTask(id); 
+      saveEditedTask(id);
     }
   };
 
@@ -158,14 +158,12 @@ const TaskList: React.FC = () => {
                   className="flex justify-between p-3 text-black gap-6 items-center"
                 >
                   <div className="flex gap-4">
-                    {/* Checkbox for marking task as complete */}
                     <input
                       type="checkbox"
                       checked={task.completed}
                       onChange={() => toggleComplete(task.id)}
                       className="cursor-pointer flex flex-wrap"
                     />
-                    {/* If editing, show input; otherwise, show task description */}
                     {editingTaskId === task.id ? (
                       <input
                         type="text"
@@ -186,9 +184,7 @@ const TaskList: React.FC = () => {
                     )}
                   </div>
                   <div className="flex justify-center items-center gap-3">
-                    {/* Button to edit task */}
                     <button onClick={() => editTask(task)}>📕</button>
-                    {/* Button to delete task */}
                     <button onClick={() => deleteTask(task.id)}>❌</button>
                   </div>
                 </li>
@@ -202,5 +198,4 @@ const TaskList: React.FC = () => {
     </div>
   );
 };
-
 export default TaskList;
