@@ -49,8 +49,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
   };
 
   return (
-    <div className=" bg-black absolute top-0 h-screen w-full left-0 flex justify-center items-center ">
-      <div className=" bg-white w-[420px] h-[270px] gap-5 flex flex-col justify-center items-start p-5 rounded-2xl">
+    <div className=" bg-white absolute top-0 h-screen w-full left-0 flex justify-center items-center ">
+      <div className=" bg-[#f3f3f4] w-[420px] h-[270px] gap-5 flex flex-col justify-center items-start p-5 rounded-2xl">
         <h1 className="text-2xl font-bold">SignUp</h1>
         <form
           onSubmit={handleSignUp}
@@ -62,6 +62,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
             value={loginData.email}
             onChange={handleOnChange}
             placeholder="Email"
+            className="border-none"
           />
           <FormInput
             type="password"
@@ -69,9 +70,10 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onClose }) => {
             value={loginData.password}
             onChange={handleOnChange}
             placeholder="Password"
+            className="border-none"
           />
           {error && <p className="text-red-500">{error}</p>}
-          <FormButton label="Sign Up" />
+          <FormButton label="Sign Up" className="bg-black text-white rounded-lg"/>
         </form>
       </div>
     </div>

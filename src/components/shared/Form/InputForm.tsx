@@ -30,16 +30,16 @@ const InputForm: React.FC<Submit> = ({ onSubmit, className }) => {
   return (
     <div>
       <AuthStatus onAuthChange={setIsUser} />
-      <form onSubmit={handleSubmit} className={`${className} flex gap-5`}>
+      <form onSubmit={handleSubmit} className={`${className} w-full flex gap-5`}>
         <FormInput
           type="input"
           name="task"
           placeholder="Enter the task..."
           value={task}
           onChange={(e) => setTask(e.target.value)}
-          className="w-[320px]"
+          className="w-1/2 "
         />
-        <FormButton label="submit" />
+        <FormButton label="submit " className="rounded-lg bg-black text-white font-medium" />
       </form>
       {showLoginPopup && <LoginForm onClose={() => setShowLoginPopup(false)} />}
     </div>

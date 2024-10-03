@@ -6,10 +6,12 @@ import AuthStatus from "../../custom/AuthStatus";
 
 const Layout: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const auth = getAuth();
 
-  const handleAuthChange = (authStatus: boolean) => {
+  const handleAuthChange = (authStatus: boolean, email?: string | null) => {
     setIsAuthenticated(authStatus);
+    setUserEmail(email || null);
   };
 
   const handleLogout = () => {
@@ -21,7 +23,12 @@ const Layout: React.FC = () => {
   return (
     <>
       <AuthStatus onAuthChange={handleAuthChange} />
-      <Header isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
+      {/* we are showing user authentication email */}
+      <Header
+        isAuthenticated={isAuthenticated}
+        userEmail={userEmail}
+        handleLogout={handleLogout}
+      />
       <Outlet />
     </>
   );

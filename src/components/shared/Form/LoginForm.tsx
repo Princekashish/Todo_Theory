@@ -50,8 +50,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
   return (
     <>
       {!isSignup ? (
-        <div className="bg-black absolute top-0 h-screen w-full left-0 flex justify-center items-center">
-          <div className="bg-white w-[420px] min-h-[270px] gap-5 flex flex-col justify-center items-start p-5 rounded-2xl">
+        <div className="bg-white absolute top-0 h-screen w-full left-0 flex justify-center items-center">
+          <div className="bg-[#f3f3f4]  w-[420px] min-h-[270px] gap-5 flex flex-col justify-center items-start p-5 rounded-2xl">
             <h1 className="text-2xl font-bold">Login</h1>
             <form onSubmit={handleLogin} className="flex flex-col justify-center gap-5 w-full">
               <FormInput
@@ -60,6 +60,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
                 value={loginData.email}
                 onChange={handleOnChange}
                 placeholder="Email"
+                className="border-none"
               />
               <FormInput
                 type="password"
@@ -67,9 +68,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose }) => {
                 value={loginData.password}
                 onChange={handleOnChange}
                 placeholder="Password"
+                className="border-none"
               />
               {error && <p className="text-red-500">{error}</p>}
-              <FormButton label="Login" />
+              <FormButton label="Login" className="bg-black text-white rounded-lg"/>
             </form>
             <h1
               onClick={() => setIsSignup(true)} // Toggle to show signup form

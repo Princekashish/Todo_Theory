@@ -11,7 +11,7 @@ const FormButton: React.FC<FormButtonProps> = ({ label, className,disabled,onCli
   return (
     <button
       type="submit"
-      className={`px-4 py-2 bg-blue-500 text-white rounded  ${className}`}
+      className={`px-4 py-2 ${className}`}
       disabled={disabled}
       onClick={onClick}
     >
